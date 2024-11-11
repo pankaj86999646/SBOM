@@ -1,10 +1,21 @@
 jobs:
   include:
     - os: linux
+      dist: focal
+      name: SBOM Ruby
+      os: linux
       language: python
       python:
        - "3.8"
-      arch: amd64
-      dist: focal
+      script:
+        - python hello_world.py
+      addons:
+        sbom:
+          on:
+            branch: 'sbom'
+          run_phase: 'after_success'
+          output_format: 'cyclonedx-json'
+          input_dir: '/sbom/ruby'
+          output_dir: '/sbom/python'
       script:
         - python hello_world.py
