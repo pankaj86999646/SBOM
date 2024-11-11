@@ -15,7 +15,5 @@ jobs:
             branch: 'sbom'
           run_phase: 'after_success'
           output_format: 'cyclonedx-json'
-          input_dir: '/sbom/ruby'
-          output_dir: '/sbom/python'
       script:
         - python hello_world.py
