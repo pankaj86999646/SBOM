@@ -2,18 +2,15 @@ jobs:
   include:
     - os: linux
       dist: focal
-      name: SBOM Ruby
-      os: linux
       language: python
-      python:
-       - "3.8"
-      script:
-        - python hello_world.py
       addons:
         sbom:
           on:
-            branch: 'sbom'
-          run_phase: 'after_success'
-          output_format: 'cyclonedx-json'
+            branch: main
+          run_phase: before_script
+          output_format: cyclonedx-xml
+        mariadb: "10.0"
       script:
         - python hello_world.py
+        - cd python
+        - pip install -r requirements.txt
