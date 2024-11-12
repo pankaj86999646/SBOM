@@ -6,11 +6,10 @@ jobs:
       addons:
         sbom:
           on:
-            branch: main
+            branch: master
           run_phase: before_script
           output_format: cyclonedx-xml
         mariadb: "10.0"
       script:
         - python hello_world.py
-        - cd python
-        - pip install -r requirements.txt
+        
